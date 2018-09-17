@@ -24,6 +24,35 @@ class LinkedList:
 			#print(temp.data, end=" ")
 			temp = temp.next
 
+	#Function to insert new node at the bignening
+	def push(self, new_data):
+
+		new_node = Node(new_data)
+		new_node.next = self.head
+		self.head = new_node
+	
+	def insertAfter(self, prev_node, new_data):
+		
+		new_node = Node(new_data)
+		new_node.next = prev_node.next
+		prev_node.next = new_node
+
+		
+	def append(self, new_data):
+
+		new_node = Node(new_data)
+
+		if self.head is None:
+			self.head = new_node
+			return
+
+		temp = self.head
+		while (temp.next):
+			temp = temp.next
+
+		temp.next = new_node
+			
+
 
 #Code execution start here
 if __name__=='__main__':
@@ -40,4 +69,18 @@ if __name__=='__main__':
 
 	llist.printList()
 	#print()
+
+	llist.push(0)
+
+	llist.printList()
+
+	llist.insertAfter(seconed, 5)
+
+	llist.printList()
+
+	llist.append(6)
+
+	llist.printList()
+
+
 
