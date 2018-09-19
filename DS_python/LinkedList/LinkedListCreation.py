@@ -20,7 +20,7 @@ class LinkedList:
 	def printList(self):
 		temp = self.head
 		while(temp):
-			print(temp.data)
+			print(temp.data),
 			#print(temp.data, end=" ")
 			temp = temp.next
 
@@ -51,6 +51,71 @@ class LinkedList:
 			temp = temp.next
 
 		temp.next = new_node
+
+	def deleteNode(self, key):
+
+		temp = self.head
+
+		if temp is not None:
+			if temp.data == key:
+				self.head = temp.next
+				temp = None
+
+		while(temp is not None):
+			if temp.data == key:
+				break
+			prev = temp
+			temp = temp.next
+
+		if temp == None:
+			return
+		prev.next = temp.next
+		temp = None	
+		
+	def deleteNodeFrmPostion(self, position):
+
+		if self.head == None:
+			return 
+
+		temp = self.head
+
+		if position == 0:
+			self.head = temp.next
+			temp == None
+			return
+
+		for i in range(position-1):
+			temp = temp.next
+			if temp == None:
+				break
+
+		if (temp or temp.next) is None:
+			return		
+   		
+   		
+		frwd_node = temp.next.next
+
+		temp.next = None
+
+		temp.next = frwd_node
+
+	def deleteList(self):
+
+		current = self.head
+		while current:
+			frwd_node = current.next
+			del current.data
+			current = frwd_node 
+
+
+		 
+
+
+
+			
+			
+
+		
 			
 
 
@@ -68,19 +133,36 @@ if __name__=='__main__':
 	seconed.next = third
 
 	llist.printList()
-	#print()
+	print()
 
 	llist.push(0)
 
 	llist.printList()
+	print()
 
 	llist.insertAfter(seconed, 5)
 
 	llist.printList()
+	print()
 
 	llist.append(6)
 
 	llist.printList()
+	print()
+
+	llist.deleteNode(5)
+
+	llist.printList()
+	print()
+
+	llist.deleteNodeFrmPostion(3)
+
+	llist.printList()
+	print()
+
+	llist.deleteList()
+
+	
 
 
 
